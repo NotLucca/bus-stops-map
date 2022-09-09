@@ -40,7 +40,7 @@ export default function Places({ setOffice }: PlacesProps) {
         onChange={(e) => setValue(e.target.value)}
         disabled={!ready}
         className="combobox-input"
-        placeholder="Procure sua vaga"
+        placeholder="Procure seu ponto"
       />
       <ComboboxPopover>
         <ComboboxList>
