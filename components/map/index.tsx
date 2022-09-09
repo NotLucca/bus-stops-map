@@ -23,7 +23,7 @@ const center = { lat: 43.45, lng: 23.49 }
 
 export default function Map() {
   const [office, setOffice] = useState<LatLngLiteral>();
-  const [userLocation, setUserLocation] = useState({ lat: 43.45, lng: 23.49 });
+  const [userLocation, setUserLocation] = useState({ lat:  -23.5062, lng: -47.4559 });
   const getGeoLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
