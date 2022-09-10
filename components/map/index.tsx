@@ -9,6 +9,7 @@ import {
   MarkerF,
   GoogleMapsMarkerClusterer,
   GoogleMarkerClusterer,
+  InfoWindow,
 } from "@react-google-maps/api";
 import stopData from "./csvjson.json";
 
@@ -23,6 +24,7 @@ const center = { lat: 43.45, lng: 23.49 }
 
 export default function Map() {
   const [office, setOffice] = useState<LatLngLiteral>();
+  const [infoPos, setInfoPos] = useState<MapArray>(null);
   const [userLocation, setUserLocation] = useState({ lat:  -23.5062, lng: -47.4559 });
   const getGeoLocation = () => {
     if (navigator.geolocation) {
@@ -81,8 +83,9 @@ export default function Map() {
           options={options}
           onLoad={onLoad}
         >
+          
           <MarkerClusterer>
-            {(clusterer) => data.map((stop: { stop_lat: any; stop_lon: any; stop_name: any; }, index: Key | null | undefined) => <Marker clusterer={clusterer} position={{lat: stop.stop_lat, lng: stop.stop_lon}} key={index}></Marker>) }
+            {(clusterer) => data.map((stop: { stop_lat: any; stop_lon: any; stop_name: any; }, index: Key | null | undefined) => <Marker onClick={() => setInfoPos({lat: stop.stop_lat, lng: stop.stop_lon, name: stop.stop_name})} clusterer={clusterer} position={{lat: stop.stop_lat, lng: stop.stop_lon}} key={index}></Marker>) }
           </MarkerClusterer>
           {/* {data.map((stop: { stop_lat: any; stop_lon: any; }, index: Key | null | undefined) => <Marker position={{lat: stop.stop_lat, lng: stop.stop_lon}} key={index}></Marker>)} */}
 
@@ -95,7 +98,8 @@ export default function Map() {
             
             </Marker>
           ))} */}
-          {office && <Marker position={office} />}
+          {office && <Marker position={office} onClick={() => setInfoPos(office)} />}
+          {infoPos ? <InfoWindow position={{lat: infoPos.lat, lng: infoPos.lng}} onCloseClick={() => setInfoPos(null)}><h1>{infoPos.name ?  `Local: ${infoPos.name}`  : "Office"}</h1></InfoWindow> : null}
         </GoogleMap>
       </div>
     </div>
