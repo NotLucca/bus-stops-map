@@ -85,7 +85,12 @@ export default function Map() {
         >
           
           <MarkerClusterer>
-            {(clusterer) => data.map((stop: { stop_lat: any; stop_lon: any; stop_name: any; }, index: Key | null | undefined) => <Marker onClick={() => setInfoPos({lat: stop.stop_lat, lng: stop.stop_lon, name: stop.stop_name})} clusterer={clusterer} position={{lat: stop.stop_lat, lng: stop.stop_lon}} key={index}></Marker>) }
+            {(clusterer) => data.map((stop: { stop_lat: any; stop_lon: any; stop_name: any; }, index: Key | null | undefined) => <Marker icon={{
+              url: "https://img.icons8.com/color/48/000000/bus.png",
+              scaledSize: new window.google.maps.Size(30, 30),
+              origin: new window.google.maps.Point(0, 0),
+              anchor: new window.google.maps.Point(15, 15),
+            }} onClick={() => setInfoPos({lat: stop.stop_lat, lng: stop.stop_lon, name: stop.stop_name})} clusterer={clusterer} position={{lat: stop.stop_lat, lng: stop.stop_lon}} key={index}></Marker>) }
           </MarkerClusterer>
           {/* {data.map((stop: { stop_lat: any; stop_lon: any; }, index: Key | null | undefined) => <Marker position={{lat: stop.stop_lat, lng: stop.stop_lon}} key={index}></Marker>)} */}
 
