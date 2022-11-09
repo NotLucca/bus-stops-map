@@ -2,7 +2,7 @@ Projeto utilizando a API do Google Maps e NextJS para mostrar todos os pontos de
 
 ![Project image](./public/md-image.png)
 
-https://creative-moonbeam-d27f90.netlify.app/
+https://openspots.netlify.app/
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
